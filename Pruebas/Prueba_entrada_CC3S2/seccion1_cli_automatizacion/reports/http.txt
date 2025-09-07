@@ -1,0 +1,30 @@
+curl -I example.com
+HTTP/2 200 
+content-type: text/html
+etag: "84238dfc8092e5d9c0dac8ef93371a07:1736799080.121134"
+last-modified: Mon, 13 Jan 2025 20:11:20 GMT
+cache-control: max-age=86000
+date: Sun, 07 Sep 2025 03:59:26 GMT
+alt-svc: h3=":443"; ma=93600,h3-29=":443"; ma=93600
+
+Explicación:
+
+- HTTP/2 Es la version del protocolo HTTP que estamos utilizando, un protocolo que es mas rapido y eficiente que su predecesor el HTTP/1.1, 
+ya que permite la multiplexacion, comprension de headers y priorizacion de recursos. El numero 200 es el codigo de HTTP que significa OK 
+y que indica que la solicitud del cliente (nosotros) fue exitosa y el servidor respondio correctamente.
+
+- text/html es el contenido que el servidor esta enviando al cliente (nosotros), en este caso es un html.
+
+- "84238dfc8092e5d9c0dac8ef93371a07:1736799080.121134", es el identificador de un recurso para una version especifica del recurso, sirve
+para validar si un recurso ha cambiado. Si el ETag no cambia, se puede utilizar la version en cache para ya no descargar nuevamente el 
+recurso.
+
+- Mon, 13 Jan 2025 20:11:20 GMT es la fecha de la ultima modificacion del recurso y junto con el ETag sirve para decidir si decargar un
+recurso nuevamente o usar la version en cache.
+
+- max-age=86000 aqui nos indican el tiempo (86000s) en que el navegador no solicitara al recurso al servidor, sino que usara la version local.
+
+- Sun, 07 Sep 2025 03:59:26 GMT esta es la fecha en que se genero la respuesta del servidor 
+
+- h3=":443"; ma=93600,h3-29=":443"; ma=93600 aqui nos indican que el servidor soporta HTTP/3 en el puerto 443, y que ademas la informacion en
+el cache se queda 93600.

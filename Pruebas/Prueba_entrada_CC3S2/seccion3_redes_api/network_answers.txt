@@ -11,3 +11,17 @@ estado de la respuesta, y numero de respuestas.
 
 Los registros DNS podemos diferenciar entre registros A, AAAA, MX, TXT, NS, SOA,
 HTTPS, CAA.
+
+3.2 API + jq
+
+Al ejecutar el comando "curl https://jsonplaceholder.typicode.com/posts/1 -s -o api_response.json"
+Hace una peticion HTTP GET a la API para obtener el post con ID 1 y lo guarda en 
+api_response.json
+
+Al ejecutar "jq -r '.title' api_response.json > api_title.txt" extrae el valor del
+campo "title" del JSON y lo escriibe en api_title.txt
+
+Para obtener los header HTTP incluyendo el Content-Type podemos ejecutar: 
+"curl -s -I https://jsonplaceholder.typicode.com/posts/1 | grep -i "Content-Type" y obtenemos
+content-type: application/json; charset=utf-8
+x-content-type-options: nosniff

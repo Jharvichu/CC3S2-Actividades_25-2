@@ -5,14 +5,20 @@
 # - CLI: python -m app "1,2,3" imprime: sum=6.0 avg=2.0 count=3
 
 def summarize(nums):  # TODO: tipado opcional
-
+    
+    if not isinstance(nums, list):
+        raise ValueError("nums debe ser una lista")
+    
+    if not nums:
+        raise ValueError("La lista no puede estar vacía")
+    
     # Convertir elementos a float y validar
     converted_nums = []
     for item in nums:
         try:
             converted_nums.append(float(item))
         except (ValueError, TypeError):
-            raise ValueError(f"Elementos no numéricos encontrado: {item}")
+            raise ValueError(f"Elemento no numérico encontrado: {item}")
     
     total = sum(converted_nums)
     count = len(converted_nums)
@@ -29,7 +35,7 @@ if __name__ == "__main__":
     import sys
     
     if len(sys.argv) < 2:
-        print("Comando de uso: python3 -m app \"1,2,3\"")
+        print("Uso: python -m app \"1,2,3\"")
         sys.exit(1)
     
     raw = sys.argv[1]

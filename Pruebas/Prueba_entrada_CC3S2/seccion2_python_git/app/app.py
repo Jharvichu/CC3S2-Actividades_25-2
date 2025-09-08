@@ -12,7 +12,7 @@ def summarize(nums):  # TODO: tipado opcional
         try:
             converted_nums.append(float(item))
         except (ValueError, TypeError):
-            raise ValueError(f"Elemento no numérico encontrado: {item}")
+            raise ValueError(f"Elementos no numéricos encontrado: {item}")
     
     total = sum(converted_nums)
     count = len(converted_nums)
@@ -29,7 +29,7 @@ if __name__ == "__main__":
     import sys
     
     if len(sys.argv) < 2:
-        print("Uso: python -m app \"1,2,3\"")
+        print("Comando de uso: python3 -m app \"1,2,3\"")
         sys.exit(1)
     
     raw = sys.argv[1]

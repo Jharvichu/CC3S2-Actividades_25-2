@@ -1,0 +1,47 @@
+A
+example.com.		155	IN	A	23.192.228.80
+example.com.		155	IN	A	23.192.228.84
+example.com.		155	IN	A	23.215.0.136
+example.com.		155	IN	A	23.215.0.138
+example.com.		155	IN	A	23.220.75.232
+example.com.		155	IN	A	23.220.75.245
+AAAA
+example.com.		295	IN	AAAA	2600:1406:5e00:6::17ce:bc12
+example.com.		295	IN	AAAA	2600:1406:5e00:6::17ce:bc1b
+example.com.		295	IN	AAAA	2600:1406:bc00:53::b81e:94c8
+example.com.		295	IN	AAAA	2600:1406:bc00:53::b81e:94ce
+example.com.		295	IN	AAAA	2600:1408:ec00:36::1736:7f24
+example.com.		295	IN	AAAA	2600:1408:ec00:36::1736:7f31
+MX
+example.com.		84170	IN	MX	0 .
+
+Registro A
+
+El DNS traduce el nombre del dominio (example.com) con una direccion IPv4 para conectarse
+al servidor, el numero 155 representa el TTL (Time To Live) en segundos, es decir que los
+servidores DNS y la computadora pueden guardar esta informacion en caché por 155 segundos
+antes de volver a consultar. IN, representa la clase del registro (internet). Ademas hay 
+varias IP para que distribuya el trafico para evitar saturación (Balanceo de carga).
+
+Registro AAAA
+
+El DNS traduce el nombre del dominio (example.com) con una direccion IPv6 para conectarse
+al servidor ya que IPv4 se está acotando y el IPv6 permite más direcciones unicas, el numero
+295 representa el TTL (Time To Live) en segundos, es decir que los servidores DNS y la 
+computadora pueden guardar esta informacion en caché por 295 segundos antes de volver a 
+consultar. IN, representa la clase del registro (internet). Ademas hay varias IP para que
+distribuya el trafico para evitar saturación (Balanceo de carga).
+
+Registro MX
+
+Este registro indica los servidores de correo responsables de recibir emails para examples.com, 
+el numero 0 define la prioridad (0 es la mas alta). El numero 84170 es el TTL en segundos, expresa
+un valor alto para evitar cambios frecuentes y reducir la carga en los servidores DNS.
+
+Nota: Observamos que los TTL difieren, el TTL alto nos trae ventajas como menos consultas DNS, es decir,
+menos carga en los servidores y mas rapido para los usuarios, pero en caso cambiemos de IP o servidor
+de correo se demorarian mucho tiempo en ver el cambio. Un TTL bajo nos trae que los cambios en DNS
+seria más rapidos, pero al haber mas consultas DNS, habria mas carga en los servidores.
+
+
+

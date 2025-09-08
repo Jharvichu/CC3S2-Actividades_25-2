@@ -1,0 +1,35 @@
+ss -tuln
+Netid State  Recv-Q Send-Q  Local Address:Port  Peer Address:PortProcess
+udp   UNCONN 0      0          127.0.0.54:53         0.0.0.0:*          
+udp   UNCONN 0      0       127.0.0.53%lo:53         0.0.0.0:*          
+udp   UNCONN 0      0      10.255.255.254:53         0.0.0.0:*          
+udp   UNCONN 0      0           127.0.0.1:323        0.0.0.0:*          
+udp   UNCONN 0      0               [::1]:323           [::]:*          
+tcp   LISTEN 0      4096       127.0.0.54:53         0.0.0.0:*          
+tcp   LISTEN 0      4096        127.0.0.1:45441      0.0.0.0:*          
+tcp   LISTEN 0      4096    127.0.0.53%lo:53         0.0.0.0:*          
+tcp   LISTEN 0      1000   10.255.255.254:53         0.0.0.0:*          
+tcp   LISTEN 0      200         127.0.0.1:5432       0.0.0.0:*          
+
+Riesgos (editar): Puertos abiertos innecesarios pueden ...
+
+En la primera linea nos muestra el comando que nos permite mostrar 
+estadisticas de sockets, pero ademas se tienen las siguientes flags:
+-t: Muestra solo sockets tcp
+-u: Muestra solo sockets UDP.
+-l: Muestra solo sockets en estado de escucha (LISTEN).
+-n: Muestra direcciones IP y puertos en formato numérico.
+
+En la tabla nos muestran lo siguiente:
+- Netid: Es el tipo de sockets
+- State: Si esta en estado LISTEN (escucha) O UNCONN (sin conexion)
+- Recv-Q: Bytes recibidos pero no procesados
+- Send-Q: Bytes enviados pero no confirmados.
+- Local Address:Port: Dirección IP y puerto local donde el socket está escuchando
+- Peer Address:Port: Dirección IP y puerto remoto (en este caso 0.0.0.0:* o [::]:* significa cualquier dirección).
+- Process: Proceso asociado
+
+Riesgos: Riesgos a tener puertos abiertos innecesarios puede ser los ataque a fuerza bruta, ya que si hay un puerto
+expuesto, un atacante puede intentar adivinar contraseñas. Otro riesgo puede ser a la explotación de vulnerabilidades 
+(servicios desactualizados puede tener fallos conocidos) o tambien el consumo de recursos que puede ocacionar un puerto
+abierto.

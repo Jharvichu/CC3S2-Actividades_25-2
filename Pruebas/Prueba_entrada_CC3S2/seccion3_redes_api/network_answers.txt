@@ -1,0 +1,13 @@
+3.1 GET y DNS
+
+A ejecutar el comando "dig @8.8.8.8 google.com ANY  > dig_output.txt", este 
+consulta al servidor publico de Google por los registros de DNS asociados al
+dominio google.com (Utilice este comando, ya que el comando qu esta en las 
+instrucciones no puede conectar a los servidor)
+
+En el archivo dig_output.txt contiene los registros DNS publicos de google.com.
+En el encabezado se obtiene la version del dig usada, el servidor consultado, el 
+estado de la respuesta, y numero de respuestas.
+
+Los registros DNS podemos diferenciar entre registros A, AAAA, MX, TXT, NS, SOA,
+HTTPS, CAA.

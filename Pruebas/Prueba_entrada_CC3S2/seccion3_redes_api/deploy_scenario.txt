@@ -1,0 +1,27 @@
+Flujo mínimo: Codigo -> Pruebas -> Despliegue
+
+1. Código:
+El desarrollo de un proyecto/software comienza con la escritura de código, ya sea en un 
+lenguaje o varios lenguajes de programación en un entorno loca, pero la programacion debe
+estar complementado con una herramienta de control de versiones, que nos puedan permitir
+colaborar, rastrear cambios, mantener un historial. Una de las herramientas mas utilizadas
+para el control de versiones es GIT y como herramienta para colaborar puede ser GitHub o 
+GitLab.
+
+2. Pruebas:
+Antes de despleguar un software, el codigo debe ser validado para evitar errores que pueda
+tener el software, esto incluye pruebas como:
+- Pruebas Unitarias: Verifican funciones individuales.
+- Pruebas de Integración: Aseguran que modulos enteros funciones.
+- Prueas E2E: Simulan el comportamiento del usuario final.
+
+Algunas herramientas pueden ser Pytest, Junit, etc.
+
+3. Despliegue: 
+Una vez aprobadas las pruebas, el código se despliega en un entorno de producción. Esto
+puede hacerse manualmente o con herramientas de CI/CD mediante automatizaciones. Estas
+herram pueden ser Docker para contenedores, Jenkins o GitHub Actions para pipelines que garantizen despliegues
+rapido y consistentes
+
+Una de las ventajas de este flujo es que reducen errores en producción, aumentan la velocidad de despliegue, se
+trabaja en entornos idénticos evitando el problema de "En mi maquina funciona".

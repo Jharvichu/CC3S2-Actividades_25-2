@@ -25,3 +25,21 @@ Para obtener los header HTTP incluyendo el Content-Type podemos ejecutar:
 "curl -s -I https://jsonplaceholder.typicode.com/posts/1 | grep -i "Content-Type" y obtenemos
 content-type: application/json; charset=utf-8
 x-content-type-options: nosniff
+
+3.3 
+
+¿Qué es HTTP?
+
+HTTP es un protocolo de comunicación para transferir datos en la web (Hypertext transferir
+protocol). Funciona como un cliente-servidor, el cleinte solicita recursos y el servidor se
+las envia
+
+Puerto 80 vs 443
+- Puerto 80: Usado para HTTP sin cifrado, las comunicaciones son legibles por terceros (es
+  inseguro)
+- Puerto 443: Usado para HTTPS (HTTP + TLS). Cifra los datos, garantizando integridad.
+
+¿Por qué TLS?
+TLS se utiliza ya que protege contra esspionaje, ya que cifra los datos para que no sean interceptados.
+Ademas protege de la manipulación ya que evita que los datos sean alterados durante la transmisión y
+protege contra la suplantación ya que verifica la identidad del servidor mediante certificados digitales.

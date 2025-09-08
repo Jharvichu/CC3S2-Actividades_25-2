@@ -5,12 +5,39 @@
 # - CLI: python -m app "1,2,3" imprime: sum=6.0 avg=2.0 count=3
 
 def summarize(nums):  # TODO: tipado opcional
-    raise NotImplementedError("Implementa summarize según el enunciado")
+
+    # Convertir elementos a float y validar
+    converted_nums = []
+    for item in nums:
+        try:
+            converted_nums.append(float(item))
+        except (ValueError, TypeError):
+            raise ValueError(f"Elemento no numérico encontrado: {item}")
+    
+    total = sum(converted_nums)
+    count = len(converted_nums)
+    avg = total / count
+    
+    return {
+        'count': count,
+        'sum': total,
+        'avg': avg
+    }
 
 
 if __name__ == "__main__":
     import sys
-    raw = sys.argv[1] if len(sys.argv) > 1 else ""
+    
+    if len(sys.argv) < 2:
+        print("Uso: python -m app \"1,2,3\"")
+        sys.exit(1)
+    
+    raw = sys.argv[1]
     items = [p.strip() for p in raw.split(",") if p.strip()]
-    # TODO: validar items y llamar summarize, luego imprimir el formato solicitado
-    print("TODO: implementar CLI (python -m app \"1,2,3\")")
+    
+    try:
+        result = summarize(items)
+        print(f"sum={result['sum']} avg={result['avg']} count={result['count']}")
+    except ValueError as e:
+        print(f"Error: {e}")
+        sys.exit(1)

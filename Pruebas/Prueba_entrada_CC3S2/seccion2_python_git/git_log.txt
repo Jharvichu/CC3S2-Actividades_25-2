@@ -1,1 +1,15 @@
-# Genera este archivo con: git log --oneline --graph --decorate --all
+* 4e4374c Mejorar mensaje de usuario en CLI
+* 8191c7c Agregar documentacion a summarize
+* c68d4c4 Readme inicial de la PE
+* ce1bdb3 Fix: validaciones de entrada
+| * dbb6c1a Fix: validaciones de entrada
+|/  
+* f785e96 Mejora de mensajes de usuario en CLI y summarize
+* fffb00c Implementacion de la funcion summarize y CLI
+* e69a57f Makefile modificado
+* 0f4aa2a Reporte tls.txt
+* 5d48fa5 Reporte sockets.txt
+* 0c1f400 Reporte dns.txt
+* d4838b5 Reporte http.txt
+* 5a65d79 Estructura inicial de la Prueba de Entrada
+* 0161c0b Initial commit

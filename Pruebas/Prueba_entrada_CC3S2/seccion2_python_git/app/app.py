@@ -46,7 +46,7 @@ if __name__ == "__main__":
     import sys
     
     if len(sys.argv) < 2:
-        print("Uso: python -m app \"1,2,3\"")
+        print("Comando de uso: python -m app \"1,2,3\"")
         sys.exit(1)
     
     raw = sys.argv[1]

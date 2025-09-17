@@ -96,7 +96,7 @@ Un indicador observable y no financiero para medir la mejora en la colaboración
 
 DevSecOps es la extensión natural de DevOps, que integra la seguridad como una responsabilidad compartida y continua en todo el ciclo de vida del desarrollo de software. El objetivo es pasar de una seguridad como "auditoría tardía" a una mentalidad de "seguridad desde el inicio" (Shift Left Security).
 
-### 1. Diferencia entre SAST y DAST**
+### 1. Diferencia entre SAST y DAST
 
 1. **SAST (Static Application Security Testing)**: esta herramienta analiza el código fuente sin ejecutarlo. Busca patrones de codigo que puedan ser vunerables como inyecciones SQL, desbordamientos de búfer o credenciales codificadas. Esta herramienta se ubica tempranamente en el pipeline CI/CD, se ejecuta justo despues de un commit o un PR, esto nos permite obtener un feedback inmediato, permitiendo corregir el error  del codigo.
    

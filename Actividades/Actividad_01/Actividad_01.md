@@ -91,3 +91,28 @@ Las retrospectivas se centran en la mejora continua del proceso. Los equipos pue
 ### 3. Indicador Observable para Medir la Colaboración Dev-Ops
 
 Un indicador observable y no financiero para medir la mejora en la colaboración entre los equipos de Desarrollo y Operaciones podria ser el tiempo promedio desde que un PR es aprobado y fusionado hasta que el despligue finalice con exito, ya que un tiempo muy largo indica un handoff ineficiente entre los equipos, en cambio un tiempo muy corto demuestra que los equipos están colaborando de manera más fluida, automatizando procesos y resolviendo cuellos de botella juntos. Para poder medir este indicador, podemos hacer uso de la API de GitHub para obtener fecha del PR y comparar con los registros del sistema de despliegue.
+
+## Evolución a DevSecOps
+
+DevSecOps es la extensión natural de DevOps, que integra la seguridad como una responsabilidad compartida y continua en todo el ciclo de vida del desarrollo de software. El objetivo es pasar de una seguridad como "auditoría tardía" a una mentalidad de "seguridad desde el inicio" (Shift Left Security).
+
+### 1. Diferencia entre SAST y DAST**
+
+1. **SAST (Static Application Security Testing)**: esta herramienta analiza el código fuente sin ejecutarlo. Busca patrones de codigo que puedan ser vunerables como inyecciones SQL, desbordamientos de búfer o credenciales codificadas. Esta herramienta se ubica tempranamente en el pipeline CI/CD, se ejecuta justo despues de un commit o un PR, esto nos permite obtener un feedback inmediato, permitiendo corregir el error  del codigo.
+   
+2. **DAST (Dynamic Application Security Testing)**: esta herramienta analiza la aplicación en ejecución simulando ataques desde el exterior. Actúa como un hacker, probando la URL de la aplicacion, inyectando datos, buscando fallos o vulnerabilidades en su entorno. Esta herramienta se ubica más tarde en el pipeline, en entornos de pruebas o staging, ya que necesita que la aplicacion este desplegada, esto nos permite descubrir vulnerabilidades que SAST no puede ver, como errores en la configuracion con el servidor, problemas de autenticación, etc.
+
+#### 2. Gate Mínimo de Seguridad en el Pipeline
+
+Para asegurar que el software no avance con vulnerabilidades críticas, se define un "security gate" (puerta de seguridad) que debe pasarse antes de la promoción a un entorno superior
+
+1. **Umbral 1: Hallazgos críticos**: al detectar un hallazgo critico o alto por herramientas SAST O DAST, bloqueara la promocion del codigo a instancias de staging o produccion, ya que representan un riesgo inmediato para el sistema.
+   
+2. **Umbral 2: Cobertura de pruebas**: el escaneo SAST del codigo debe tener una cobertura minima del 95%, si es menor el pipeline fallara, ya que si no pasa la umbral podria ocultar vulnerabilidades.
+
+#### 3. Política de Excepción y Recertificación
+
+En ocaciones, una vulnerabilidad critica no puede ser correegida de inmediato, asi que se necesita una politica de excepción clara. Se necesita identificar al responsable que introdujo el código o que depende de el, luego se debe diseñar un plan claro de mitigacion o plan de correción. Esta excepcion debe tener una fecha de caducidad, ya que obliga a los equipos abordar la vulnerabilidad y evita que se quede sin resolver, despues de esta fecham el pipeline bloqueara el nuevo código que se añada hasta que se corrija. El aprobador de la excepcion generalmente es el equipo de seguridad o el product manager.
+
+
+

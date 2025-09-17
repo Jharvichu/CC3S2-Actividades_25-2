@@ -68,4 +68,26 @@ Este diagrama ilustra cómo los equipos pueden operar de forma aislada, lo que l
 2. **Seguridad como Auditoria Tardia**: Este anti-patrón se presenta cuando la seguridad se considera una fase separada que ocurre al final del desarrollo, a menudo justo antes del despliegue o después de que el software ya está en producción. En lugar de integrar prácticas de seguridad desde el principio, se trata como una *auditoría tardía* o un *chequeo de última hora*, a menudo encontrando vulnerabilidades después de que el código ha sido desplegado.
    1. **Como se agrava el incidente**: Descubrir vulnerabilidades críticas al final significa que corregirlas es mucho más costoso y requiere retrabajos significativos. Si las vulnerabilidades no se corrigen a tiempo, aumenta la probabilidad de incidentes de seguridad (filtraciones de datos, ataques).
 
+## Principios y Beneficios de DevOps
 
+Los pilares de este enfoque DevOps son la Integración Continua (CI), el Despliegue Continuo (CD), la automatización y la colaboración.
+
+### 1. Integracion Continua (CI) y Despligue Continuo (CD)
+
+1. **Integracion Continua (CI)**:  Es la práctica de fusionar los cambios pequeños de código (commits) de los desarrolladores en una rama principal de forma regular y frecuente, reduciendo comlejidad y riesgo a comlictos. Cada vez que se fusiona el código, se ejecuta un conjunto de pruebas automatizadas para detectar errores, proporcionandonos feedback instantaneo, sobre si su codigo rompio algo o no. 
+
+2. **Despligue Continuo (CD)**: Una vez que el código pasa las pruebas automatizadas y está listo, se prepara para su despliegue a un entorno de producción de forma automática. El CD permite que las funcionalidades que han superado las pruebas se desplieguen en entornos de prueba o de producción de forma segura y consistente.
+
+CI y CD obligan a los equipos a colaborar. Los desarrolladores dependen de la infraestructura de operaciones para ejecutar el pipeline de CI/CD, y los equipos de operaciones necesitan el apoyo de los desarrolladores para resolver problemas detectados en las pruebas automatizadas o en la producción.
+
+### 2. Agile como Precursor y su Impacto en el Pipeline
+
+Durante las reuniones, los equipos discuten el progreso, los bloqueos y los proximos pasos. Si un desarrollador menciona que una prueba automatizada falla o que un despliegue se bloquea, el equipo puede tomar una decisión inmediata:
+
+- Si un grupo de funcionalidades superaron las pruebas, se decide que se promoveran a otro equipo o en caso se identifica un problema crítico, el equipo decide bloquear el pipeline de despliegue hasta que se resuelva el problema.
+
+Las retrospectivas se centran en la mejora continua del proceso. Los equipos pueden analizar datos del pipeline de CI/CD: ¿Qué falló en el último sprint? ¿Por qué el despliegue de una funcionalidad tardó más de lo esperado? Las decisiones que surgen de estas discusiones, cómo agregar un nuevo tipo de prueba o cómo mejorar el pipeline.
+
+### 3. Indicador Observable para Medir la Colaboración Dev-Ops
+
+Un indicador observable y no financiero para medir la mejora en la colaboración entre los equipos de Desarrollo y Operaciones podria ser el tiempo promedio desde que un PR es aprobado y fusionado hasta que el despligue finalice con exito, ya que un tiempo muy largo indica un handoff ineficiente entre los equipos, en cambio un tiempo muy corto demuestra que los equipos están colaborando de manera más fluida, automatizando procesos y resolviendo cuellos de botella juntos. Para poder medir este indicador, podemos hacer uso de la API de GitHub para obtener fecha del PR y comparar con los registros del sistema de despliegue.

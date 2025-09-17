@@ -45,5 +45,27 @@ Si bien DevOps es ampliamente adoptado, existen contextos donde un enfoque más 
    1. **Criterio Verificable** El software diseñado debe trabajar con un hardware de alto costo, que no se puede actualizar o reemplazar facilmente
    2. **Trade-off**:  La fiabilidad y la estabilidad a lo largo de la vida útil del sistema son el objetivo principal. El modelo de cascada invierte un tiempo significativo en la fase de diseño inicial para garantizar que el software sea compatible y robusto con este hardware desde el principio. Un enfoque de DevOps podría introducir incompatibilidades impredecibles o bugs en el sistema que serían casi imposibles.
    
+## Ciclo tradicional de dos pasos  y silos
+
+### 1. Diagrama de silos organizacionales
+
+<p align="center">
+  <img src="Imagenes/silos-equipos.png" alt="Descripción" width="800"/>
+</p>
+
+Este diagrama ilustra cómo los equipos pueden operar de forma aislada, lo que lleva a costos de integración tardía y una acumulación de defectos en espera debido a la falta de comunicación y colaboración fluida.
+
+### 2. Limitaciones del Ciclo "Construcción -> Operación" sin Integración Continua
+
+1. **Grande Lotes y Handoff ineficientes:** Sin que haya una integracion continua, el equipo de desarrolladores pueden estar acumulando una gran cantidad de cambios y cuando este equipo considera terminado, se produce un *handoff*, es decir una transferencia, al equipo de pruebas, pero este equipo no tiene conocimiento del trabajo que avanzo el equipo de desarrollo. No conoce las configuracion, entorno, no estan familiarizados con el producto hecho en el equipo de desarrollo, lo que podria ocacionar demoras, fricciones, asimetrias de información (cuando el equipo de desarrollo conoce detalles cruciales que el otro equipó desconoce).
+2. **Colas de defectos y Feedback tardio:** Sin tener una integracion continua del softeware, los desarrolladores no tienen una retroalimentacion sobre la calidad de su codigo, la integracion con otros componentes o su rendimiento en un entorno de produccion hasta mucho despues tiempo, ocasionando una cola de defectos donde los bugs se acumulan en espera de ser resueltos, aumentandoi el retrabajo, donde puede degradar la calidad del software.
+
+### 3. Pregunta Retadora: Anti-patrones y cómo agravan incidentes
+
+1. **Throw Over the Wall**: Este anti-patrón describe la situación en la que el equipo de desarrollo "lanza" el código terminado a otro equipo sin una comunicación y asumiendo que el otro equipo se encargará de cualquier problema. Es una versión extrema del handoff ineficiente. Las asimetrías de información son abundantes, ya que el conocimiento crucial sobre el funcionamiento interno del software y las decisiones de diseño se queda en el equipo de desarrollo.
+   1. **Como se agrava el incidente**: Cuando ocurre un incidente en producción, el equipo de operaciones no puede diagnosticar rápidamente el problema. Deben recurrir al equipo de desarrollo, que puede estar ocupado con otras tareas. Este desconocimiento aumenta el tiempo medio de recuperacion del accidente (MTTR), afectando la disponibilidad del servicio.
+   
+2. **Seguridad como Auditoria Tardia**: Este anti-patrón se presenta cuando la seguridad se considera una fase separada que ocurre al final del desarrollo, a menudo justo antes del despliegue o después de que el software ya está en producción. En lugar de integrar prácticas de seguridad desde el principio, se trata como una *auditoría tardía* o un *chequeo de última hora*, a menudo encontrando vulnerabilidades después de que el código ha sido desplegado.
+   1. **Como se agrava el incidente**: Descubrir vulnerabilidades críticas al final significa que corregirlas es mucho más costoso y requiere retrabajos significativos. Si las vulnerabilidades no se corrigen a tiempo, aumenta la probabilidad de incidentes de seguridad (filtraciones de datos, ataques).
 
 

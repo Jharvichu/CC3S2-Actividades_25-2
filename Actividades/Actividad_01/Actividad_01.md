@@ -102,7 +102,7 @@ DevSecOps es la extensión natural de DevOps, que integra la seguridad como una 
    
 2. **DAST (Dynamic Application Security Testing)**: esta herramienta analiza la aplicación en ejecución simulando ataques desde el exterior. Actúa como un hacker, probando la URL de la aplicacion, inyectando datos, buscando fallos o vulnerabilidades en su entorno. Esta herramienta se ubica más tarde en el pipeline, en entornos de pruebas o staging, ya que necesita que la aplicacion este desplegada, esto nos permite descubrir vulnerabilidades que SAST no puede ver, como errores en la configuracion con el servidor, problemas de autenticación, etc.
 
-#### 2. Gate Mínimo de Seguridad en el Pipeline
+### 2. Gate Mínimo de Seguridad en el Pipeline
 
 Para asegurar que el software no avance con vulnerabilidades críticas, se define un "security gate" (puerta de seguridad) que debe pasarse antes de la promoción a un entorno superior
 
@@ -110,9 +110,36 @@ Para asegurar que el software no avance con vulnerabilidades críticas, se defin
    
 2. **Umbral 2: Cobertura de pruebas**: el escaneo SAST del codigo debe tener una cobertura minima del 95%, si es menor el pipeline fallara, ya que si no pasa la umbral podria ocultar vulnerabilidades.
 
-#### 3. Política de Excepción y Recertificación
+### 3. Política de Excepción y Recertificación
 
 En ocaciones, una vulnerabilidad critica no puede ser correegida de inmediato, asi que se necesita una politica de excepción clara. Se necesita identificar al responsable que introdujo el código o que depende de el, luego se debe diseñar un plan claro de mitigacion o plan de correción. Esta excepcion debe tener una fecha de caducidad, ya que obliga a los equipos abordar la vulnerabilidad y evita que se quede sin resolver, despues de esta fecham el pipeline bloqueara el nuevo código que se añada hasta que se corrija. El aprobador de la excepcion generalmente es el equipo de seguridad o el product manager.
 
+## CI/CD y Estrategias de despliegue
 
+Las estrategias de despliegue son un componente crítico de la entrega continua (CD), permitiendo a los equipos lanzar nuevas versiones de software de forma segura y controlada. A continuación, se presenta un diagrama que ilustra el proceso del despliegue canary.
 
+<p align="center">
+  <img src="https://geekflare.com/es/wp-content/uploads/2023/07/AWS-Canary.gif" alt="Alt Text">
+</p>
+
+### Estrategia de Despliegue para un Microservicio Crítico
+
+Un fallo en el servicio de autenticación podría dejar a todos los usuarios sin acceso, con un impacto catastrófico. El despliegue canary mitiga este riesgo al liberar la nueva versión solo a un pequeño subconjunto de usuarios antes de una adopción completa. Esto permite probar la nueva versión en un entorno de producción real, pero con un impacto limitado. Si surge algún problema, el tráfico puede redirigirse rápidamente a la versión antigua, minimizando la interrupción.
+
+### Tabla de Riesgos y Mitigaciones en Despliegues Canary
+
+| Riesgo                                                                                                  | Mitigación                                                                           |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| Errores de configuración                                  | Validar la configuración en un entorno staging antes de enviar a produccion         |
+| Incompatibilidad entre los formatos que manejan otros servicios | Hacer pruebas de integracion             |
+| Sobrecarga inesperada                            | Monitorear uso de recursos y definir alertas para revertir rápido si sube demasiado. |
+
+### KPI y Umbral para Promoción/Aborto
+
+La latencia p95 es la medición del tiempo de respuesta que tiene el 95% de solicitudes. Por ejemplo, si decimos que p95 = 120 ms y tenemos 100 solicitudes, habrán 95 solicitudes que tarden como máximo 120 ms. Las otras 5 tardan más que dicho valor.
+
+Un KPI podría ser la medición de la latencia p95 de un endpoint. Diremos que el umbral es de 700 ms y la ventana de observación es de 1 hora. Si la latencia p95 se mantiene menor al umbral durante el periodo de la ventana de observación, se promueve, sino, se aborta el despliegue.
+
+### Coexistencia de Métricas Técnicas y de Producto
+
+El KPI solo es una métrica de una característica en específico, no tiene en cuenta todo el panorama general de la aplicación. Por ejemplo, cuando se introduce un cambio en el login que lo hace un tanto más complejo. Las solicitudes llegan y se atienden con una latencia baja (el KPI indica que todo está bien); sin embargo, otros aspectos, como la experiencia del usuario, son afectadas negativamente y no se ve reflejada en dicha métrica. Se deben tener en cuenta ambos para garantizar que funcione correctaemente y no tenga un impacto negativo en el negocio.

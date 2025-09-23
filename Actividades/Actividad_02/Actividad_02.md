@@ -68,3 +68,4 @@ Este comando demuestra que un proceso está escuchando en el puerto 8080. La sal
   <img src="Imagenes/Logs_stdout.png" alt="Descripción" width="900"/>
 </p>
 
+No se guardan los logs en un archivo ya que de acuerdo con la metodología 12-Factor App, las aplicaciones deben tratar los logs como un flujo continuo de eventos que se envía a la salida estándar (`stdout`) de la terminal. Esta práctica simplifica el despliegue porque desacopla la aplicación de la gestión del almacenamiento de logs.

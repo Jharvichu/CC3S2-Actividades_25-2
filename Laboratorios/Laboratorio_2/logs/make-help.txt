@@ -1,0 +1,7 @@
+USO: make <TARGET>
+Targets disponibles y su funcionalidad:
+  all           Construir, testear y empaquetar todo
+  build         Generar out/hello.txt
+  clean         Limpiar archivos generados
+  help          Mostrar ayuda
+10:.PHONY: all build test package clean help init tools check benchmark format dist-clean verify-repo

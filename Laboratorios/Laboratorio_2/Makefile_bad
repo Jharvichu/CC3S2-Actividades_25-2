@@ -22,8 +22,8 @@ all: tools lint build test package ## Construir, testear y empaquetar todo
 build: $(OUT_DIR)/hello.txt ## Generar out/hello.txt
 
 $(OUT_DIR)/hello.txt: $(SRC_DIR)/hello.py
-	mkdir -p $(@D)
-	$(PYTHON) $< > $@
+ mkdir -p $(@D)
+ $(PYTHON) $< > $@
 
 clean: ## Limpiar archivos generados
 	rm -rf $(OUT_DIR) $(DIST_DIR)

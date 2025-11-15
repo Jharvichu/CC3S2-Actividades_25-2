@@ -6,3 +6,13 @@ bdd
 .coverage
 __pycache__/
 .pytest_cache/
+
+# Terraform
+**/.terraform/
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
+*.tfplan
+*.tfvars
+*.tfvars.json

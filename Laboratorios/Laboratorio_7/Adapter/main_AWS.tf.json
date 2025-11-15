@@ -1,0 +1,130 @@
+{
+    "resource": [
+        {
+            "aws_iam_user": {
+                "audit-team": {
+                    "name": "audit-team"
+                }
+            }
+        },
+        {
+            "null_resource": {
+                "attach_audit-team_read": {
+                    "triggers": {
+                        "user": "audit-team",
+                        "arn": "arn:aws:iam::123456789012:user/audit-team",
+                        "policy": "read"
+                    }
+                }
+            }
+        },
+        {
+            "aws_iam_user": {
+                "user-01": {
+                    "name": "user-01"
+                }
+            }
+        },
+        {
+            "null_resource": {
+                "attach_user-01_read": {
+                    "triggers": {
+                        "user": "user-01",
+                        "arn": "arn:aws:iam::123456789012:user/user-01",
+                        "policy": "read"
+                    }
+                }
+            }
+        },
+        {
+            "aws_iam_user": {
+                "user-02": {
+                    "name": "user-02"
+                }
+            }
+        },
+        {
+            "null_resource": {
+                "attach_user-02_read": {
+                    "triggers": {
+                        "user": "user-02",
+                        "arn": "arn:aws:iam::123456789012:user/user-02",
+                        "policy": "read"
+                    }
+                }
+            }
+        },
+        {
+            "aws_iam_user": {
+                "infrastructure-team": {
+                    "name": "infrastructure-team"
+                }
+            }
+        },
+        {
+            "null_resource": {
+                "attach_infrastructure-team_write": {
+                    "triggers": {
+                        "user": "infrastructure-team",
+                        "arn": "arn:aws:iam::123456789012:user/infrastructure-team",
+                        "policy": "write"
+                    }
+                }
+            }
+        },
+        {
+            "aws_iam_user": {
+                "user-03": {
+                    "name": "user-03"
+                }
+            }
+        },
+        {
+            "null_resource": {
+                "attach_user-03_write": {
+                    "triggers": {
+                        "user": "user-03",
+                        "arn": "arn:aws:iam::123456789012:user/user-03",
+                        "policy": "write"
+                    }
+                }
+            }
+        },
+        {
+            "aws_iam_user": {
+                "automation-01": {
+                    "name": "automation-01"
+                }
+            }
+        },
+        {
+            "null_resource": {
+                "attach_automation-01_write": {
+                    "triggers": {
+                        "user": "automation-01",
+                        "arn": "arn:aws:iam::123456789012:user/automation-01",
+                        "policy": "write"
+                    }
+                }
+            }
+        },
+        {
+            "aws_iam_user": {
+                "manager-team": {
+                    "name": "manager-team"
+                }
+            }
+        },
+        {
+            "null_resource": {
+                "attach_manager-team_admin": {
+                    "triggers": {
+                        "user": "manager-team",
+                        "arn": "arn:aws:iam::123456789012:user/manager-team",
+                        "policy": "admin"
+                    }
+                }
+            }
+        }
+    ]
+}

@@ -2,10 +2,10 @@
     "resource": [
         {
             "null_resource": {
-                "identity_audit_team_read": {
+                "identity_audit_team_read_only": {
                     "triggers": {
                         "identity": "audit-team",
-                        "role": "read",
+                        "role": "read_only",
                         "user": "audit-team"
                     }
                 }
@@ -13,10 +13,10 @@
         },
         {
             "null_resource": {
-                "identity_user_01_read": {
+                "identity_user_01_read_only": {
                     "triggers": {
                         "identity": "user-01",
-                        "role": "read",
+                        "role": "read_only",
                         "user": "user-01"
                     }
                 }
@@ -24,10 +24,10 @@
         },
         {
             "null_resource": {
-                "identity_user_02_read": {
+                "identity_user_02_read_only": {
                     "triggers": {
                         "identity": "user-02",
-                        "role": "read",
+                        "role": "read_only",
                         "user": "user-02"
                     }
                 }

@@ -23,7 +23,7 @@
    * Registra el proveedor `null`.
 
 <p align="center">
-  <img src="Imagenes/image02.png" alt="alt text" width="1000">
+  <img src="Imagenes/image02.png" alt="alt text" width="900">
 </p>
 
 3. **Validar configuración**
@@ -35,7 +35,7 @@
    * Verifica sintaxis y coherencia.
 
 <p align="center">
-  <img src="Imagenes/image03.png" alt="alt text" width="1000">
+  <img src="Imagenes/image03.png" alt="alt text" width="900">
 </p>
 
 4. **Planificar**
@@ -47,7 +47,7 @@
    * Muestra los cambios previstos.
   
 <p align="center">
-  <img src="Imagenes/image04.png" alt="alt text" width="1000">
+  <img src="Imagenes/image04.png" alt="alt text" width="900">
 </p>
 
 5. **Aplicar**
@@ -59,7 +59,7 @@
    * Ejecuta los `null_resource`, registrando los triggers en estado.
 
 <p align="center">
-  <img src="Imagenes/image05.png" alt="alt text" width="1000">
+  <img src="Imagenes/image05.png" alt="alt text" width="900">
 </p>
 
 6. **Revisar estado**
@@ -71,7 +71,7 @@
    * Consulta `terraform.tfstate`.
 
 <p align="center">
-  <img src="Imagenes/image06.png" alt="alt text" width="1000">
+  <img src="Imagenes/image06.png" alt="alt text" width="900">
 </p>
 
 #### **Ejercicios teóricos y prácticos**

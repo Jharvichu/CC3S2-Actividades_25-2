@@ -1,3 +1,7 @@
 [submodule "Pruebas/CC3S2-2025-2-PC1"]
 	path = Pruebas/CC3S2-2025-2-PC1
 	url = https://github.com/AldoLunaBueno/CC3S2-2025-2-PC1.git
+
+[submodule "Pruebas/PC2_DS_25_2"]
+	path = Pruebas/PC2_DS_25_2
+	url = https://github.com/AlbeCamp21/PC2_DS_25_2

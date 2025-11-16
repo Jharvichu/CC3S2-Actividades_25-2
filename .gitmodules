@@ -5,3 +5,7 @@
 [submodule "Pruebas/PC2_DS_25_2"]
 	path = Pruebas/PC2_DS_25_2
 	url = https://github.com/AlbeCamp21/PC2_DS_25_2
+
+[submodule "Pruebas/DS-PC3-Grupo5-Proyecto8-Cadena-Suministro"]
+	path = Pruebas/DS-PC3-Grupo5-Proyecto8-Cadena-Suministro
+	url = https://github.com/AldoLunaBueno/DS-PC3-Grupo5-Proyecto8-Cadena-Suministro
